@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.Html;
 import android.util.Base64;
 import android.view.Menu;
@@ -33,7 +34,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.util.EntityUtils;
 
-public class SwCallsActivity extends Activity {
+public class SwCallsActivity extends Activity implements SwipeRefreshLayout.OnRefreshListener {
     // Constants
     private static final String TAG = "SwCallsActivity";
     private static final String XMLMC_API_COUNT = "http://dc-supportworks.derby-college.ac.uk/sw/mobile/android_getcallscount.php";
@@ -42,6 +43,7 @@ public class SwCallsActivity extends Activity {
 
     // Display Widgets
     private ListView listViewCallsList;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private TextView textViewAnalystName;
     private TextView textViewCallCount;
 
@@ -60,6 +62,7 @@ public class SwCallsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sw_calls);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         textViewAnalystName = (TextView) findViewById(R.id.textViewAnalystName);
         textViewCallCount = (TextView) findViewById(R.id.textViewCallCount);
         listViewCallsList = (ListView) findViewById(R.id.listViewCallsList);
@@ -79,6 +82,8 @@ public class SwCallsActivity extends Activity {
                 return true;
             }
         });
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorScheme(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
 
         sharedPref = getSharedPreferences(getString(R.string.preferences_file), Context.MODE_PRIVATE);
         mUsername = sharedPref.getString(SwLogonActivity.ANALYST_ID, "");
@@ -122,6 +127,11 @@ public class SwCallsActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+    @Override
+    public void onRefresh() {
+        new swLogonTask().execute(SwLogonActivity.XMLMC_API_LOGON, mUsername, mPassword);
     }
 
     // new swLogonTask().execute(XMLMC_API_LOGON, USERNAME, PASSWORD);
@@ -265,6 +275,7 @@ public class SwCallsActivity extends Activity {
             } else {
                 // wft?
             }
+            swipeRefreshLayout.setRefreshing(false);
         }
     }
 
