@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Estates Calls</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="email_hint">Enter your college email</string>
+    <string name="password_hint">Enter your college password</string>
+    <string name="logon_text">Sign In</string>
+    <string name="wifi_searching">Wifi Status: Searching ...</string>
+    <string name="logonTime_token">last_logon_time</string>
+    <string name="username_token">username</string>
+    <string name="password_token">password</string>
+    <string name="title_activity_sw_calls">Calls View</string>
+    <string name="title_activity_sw_call_details">Call Details</string>
+    <string name="textCustomer">Customer</string>
+    <string name="textSite">Site</string>
+    <string name="textFixTarget">Fix Target</string>
+    <string name="textCallDetails">Call Details for</string>
+
+    <string name="preferences_file">uk.co.stevegiller.work.android.estatesCalls.SwPrefs</string>
+    <string name="no_wifi">WiFi not connected</string>
+    <string name="derbycollege">Derby College</string>
+</resources>

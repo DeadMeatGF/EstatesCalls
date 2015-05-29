@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="android.work.stevegiller.co.uk.estatescalls.SwCallsActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewAnalystName"
+        android:layout_below="@+id/textViewAppTitle"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewCallCount"
+        android:layout_below="@+id/textViewAppTitle"
+        android:layout_alignParentEnd="true"
+        android:textSize="24sp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewCallsList"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewAnalystName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/derbycollege"
+        android:id="@+id/textViewCollegeName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:layout_toEndOf="@+id/imageViewCollegeLogo"
+        android:paddingLeft="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:id="@+id/textViewAppTitle"
+        android:layout_below="@+id/textViewCollegeName"
+        android:layout_alignParentEnd="true"
+        android:textStyle="bold|italic"
+        android:textSize="32sp"
+        android:layout_toEndOf="@+id/imageViewCollegeLogo"
+        android:paddingLeft="16dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewCollegeLogo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/derby_college"
+        android:layout_above="@+id/textViewAnalystName" />
+</RelativeLayout>
